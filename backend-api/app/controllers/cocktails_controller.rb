@@ -2,16 +2,16 @@ class CocktailsController < ApplicationController
     
     def index
         @cocktails = Cocktail.all
-        render :json @cocktails
+        render json: @cocktails
     end
 
     def create
         @cocktail = Cocktail.new(cocktail_params)
-        if @cocktail.save
-            render :json @cocktail, status: :created
-        else
-            render :json @cocktail.errors.full_messages, status: :unprocessable_entity
-        end
+        # if @cocktail.save
+        #     render :json @cocktail, status: created
+        # else
+        #     render :json @cocktail.errors.full_messages, status: :unprocessable_entity
+        # end
     end
 
     private
