@@ -1,3 +1,5 @@
+const cocktailList = () => document.getElementById('cocktail-list')
+
 const baseUrl = 'http://localhost:3000'
 
 document.addEventListener('DOMContentLoaded', callOnLoad)
@@ -34,4 +36,5 @@ function displayCocktail(cocktail) {
 
     div.appendChild(h4)
     div.appendChild(p)
+    cocktailList().appendChild(div)
 }
