@@ -21,13 +21,13 @@ function loadCocktails() {
 }
 
 function displayCocktails(cocktails) {
-    cocktails.forEach(cocktail => displayCocktails(cocktail))
+    cocktails.forEach(cocktail => displayCocktail(cocktail))
 }
 
 function displayCocktail(cocktail) {
-    const div = document.createElement('div')
-    const h4 = document.createElement('h4')
-    const p = document.createElement('p')
+    const div = document.createElement('div');
+    const h4 = document.createElement('h4');
+    const p = document.createElement('p');
     // const deleteButton = document.createElement('button')
     // const editButton = document.createElement('button')
 
