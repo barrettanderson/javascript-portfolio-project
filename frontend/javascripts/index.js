@@ -1,4 +1,8 @@
 const cocktailList = () => document.getElementById('cocktail-list')
+const form = () => document.querySelector('form')
+const cocktailName = () => document.querySelector('input#cocktail-name')
+const cocktailDescription = () => document.querySelector('textarea#cocktail-description')
+const submitButton = () => document.getElementById('submit-cocktail')
 
 const baseUrl = 'http://localhost:3000'
 
@@ -7,7 +11,8 @@ let editing = false
 document.addEventListener('DOMContentLoaded', callOnLoad)
 
 function callOnLoad() {
-    loadCocktails()
+    loadCocktails();
+    form().addEventListener('submit', createCocktail)
 }
 
 function loadCocktails() {
@@ -39,4 +44,26 @@ function displayCocktail(cocktail) {
     div.appendChild(h4)
     div.appendChild(p)
     cocktailList().appendChild(div)
+}
+
+function createCocktail(e) {
+    e.preventDefault()
+    const strongParams = {
+        cocktail: {
+            name: cocktailName().value,
+            description: cocktailDescription().value
+        }
+    }
+    fetch(baseUrl + '/cocktails.json', {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(strongParams)
+    })
+        .then(resp => resp.json())
+        .then(cocktail => {
+            displayCocktail(cocktail)
+        })
 }
