@@ -48,7 +48,7 @@ function displayCocktail(cocktail) {
 
 function createCocktail(e) {
     e.preventDefault()
-    debugger;
+    // debugger;
     const strongParams = {
         cocktail: {
             name: cocktailName().value,

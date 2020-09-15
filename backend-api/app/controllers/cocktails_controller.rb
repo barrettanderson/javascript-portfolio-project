@@ -7,12 +7,12 @@ class CocktailsController < ApplicationController
 
     def create
         @cocktail = Cocktail.new(cocktail_params)
-        # if @cocktail.save
-        #     render :json @cocktail, status: created
-        # else
-        #     render :json @cocktail.errors.full_messages, status: :unprocessable_entity
-        # end
-        render @cocktail
+        if @cocktail.save
+            render json: @cocktail, status: created
+        else
+            render json: @cocktail.errors.full_messages, status: :unprocessable_entity
+        end
+        # render json: @cocktail
     end
 
     private
