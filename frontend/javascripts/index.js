@@ -2,6 +2,8 @@ const cocktailList = () => document.getElementById('cocktail-list')
 
 const baseUrl = 'http://localhost:3000'
 
+let editing = false
+
 document.addEventListener('DOMContentLoaded', callOnLoad)
 
 function callOnLoad() {

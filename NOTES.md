@@ -17,3 +17,8 @@ Join Table - (belongs_to cocktail, belongs_to ingredient)
 Ingredients (has_many cocktails through :ingredientcocktailjointableextraordinaire)
     (id)
     name
+
+Questions for Laura
+    Form for creating cocktail
+    How am I integrating the join table model in the objects themselves?  Right now I have just cocktails, but where do ingredients come into play, and theen the join table
+    OO Javascript
