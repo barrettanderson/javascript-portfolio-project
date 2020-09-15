@@ -48,6 +48,7 @@ function displayCocktail(cocktail) {
 
 function createCocktail(e) {
     e.preventDefault()
+    debugger;
     const strongParams = {
         cocktail: {
             name: cocktailName().value,
@@ -66,4 +67,10 @@ function createCocktail(e) {
         .then(cocktail => {
             displayCocktail(cocktail)
         })
+    resetInputs();
+}
+
+function resetInputs() {
+    cocktailName().value = "";
+    cocktailDescription().value = "";
 }
