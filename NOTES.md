@@ -19,6 +19,8 @@ Ingredients (has_many cocktails through :ingredientcocktailjointableextraordinai
     name
 
 Questions for Laura
-    Form for creating cocktail
+    Edit Button
     How am I integrating the join table model in the objects themselves?  Right now I have just cocktails, but where do ingredients come into play, and theen the join table
     OO Javascript
+
+    Ingredients - Find or create by method

@@ -28,27 +28,15 @@ function loadCocktails() {
 }
 
 function displayCocktails(cocktails) {
-    cocktails.forEach(cocktail => displayCocktail(cocktail))
+    cocktails.forEach(cocktail => {
+        cocktail = new Cocktail(cocktail.id, cocktail.name, cocktail.description)
+        cocktailList().appendChild(cocktail.renderCocktail())
+    })
 }
 
-function displayCocktail(cocktail) {
-    const div = document.createElement('div');
-    const h4 = document.createElement('h4');
-    const p = document.createElement('p');
-    // const deleteButton = document.createElement('button')
-    // const editButton = document.createElement('button')
-
-    h4.innerText = cocktail.name
-    p.innerText = cocktail.description
-
-    div.appendChild(h4)
-    div.appendChild(p)
-    cocktailList().appendChild(div)
-}
 
 function createCocktail(e) {
     e.preventDefault()
-    // debugger;
     const strongParams = {
         cocktail: {
             name: cocktailName().value,
@@ -65,9 +53,13 @@ function createCocktail(e) {
     })
         .then(resp => resp.json())
         .then(cocktail => {
-            displayCocktail(cocktail)
+            renderCocktail(cocktail)
         })
     resetInputs();
+}
+
+function editCocktail() {
+
 }
 
 function resetInputs() {
