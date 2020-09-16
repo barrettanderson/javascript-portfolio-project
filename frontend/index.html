@@ -28,8 +28,6 @@
         <div class="card">
           <div class="card-content">
             <h3 id="form-title" class="center">Mix a Cocktail</h3>
-            <!-- <p id="form-description" class="center">Let's implement some events using forms!</p> -->
-    
             <form id="cocktail-form">
               <div class="input-field">
                 <input type="text" name="cocktail-name" id="cocktail-name">
@@ -39,7 +37,12 @@
                 <textarea type="text" name="cocktail-description" id="cocktail-description" class="materialize-textarea"></textarea>
                 <label for="cocktail-description">Description</label>
               </div>
-              <div id="ingredient-list"></div>
+              <div id="ingredient-list">
+                <label>
+                <input type="checkbox" class="filled-in" name="check" id="check">
+                <span>INGREDIENT NAME GOES HERE</span>
+                </label>
+              </div>
     
               <input type="submit" value="Create Cocktail" class="btn" id="submit-cocktail">
             </form>
