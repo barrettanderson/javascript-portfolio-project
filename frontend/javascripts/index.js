@@ -7,6 +7,7 @@ const submitButton = () => document.getElementById('submit-cocktail')
 const baseUrl = 'http://localhost:3000'
 
 let editing = false
+let editedCocktailId = null;
 
 document.addEventListener('DOMContentLoaded', callOnLoad)
 
@@ -36,31 +37,43 @@ function displayCocktails(cocktails) {
 
 
 function createCocktail(e) {
-    debugger;
     e.preventDefault()
-    const strongParams = {
-        cocktail: {
-            name: cocktailName().value,
-            description: cocktailDescription().value
+
+    if (editing) {
+        updateCocktail();
+    } else {
+        const strongParams = {
+            cocktail: {
+                id: this.value,
+                name: cocktailName().value,
+                description: cocktailDescription().value
+            }
         }
-    }
-    fetch(baseUrl + '/cocktails.json', {
-        method: "POST",
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(strongParams)
-    })
-        .then(resp => resp.json())
-        .then(cocktail => {
-            cocktail.renderCocktail()
+        fetch(baseUrl + '/cocktails.json', {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(strongParams)
         })
-    resetInputs();
+            .then(resp => resp.json())
+            .then(cocktail => {
+                cocktail = new Cocktail(cocktail.id, cocktail.name, cocktail.description)
+                cocktail.renderCocktail()
+            })
+        resetInputs();
+    }
 }
 
 function editCocktail() {
+    editing = true;
 
+    cocktailName().value = this.parentNode.querySelector('h4').innterText
+    cocktailDescription().value = this.parentNode.querySelector('p').innterText
+    submitButton().value = "Edit Cocktail"
+
+    editedCocktailId = this.id;
 }
 
 function resetInputs() {
