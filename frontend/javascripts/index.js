@@ -60,9 +60,10 @@ function createCocktail(e) {
             .then(resp => resp.json())
             .then(cocktail => {
                 cocktail = new Cocktail(cocktail.id, cocktail.name, cocktail.description)
-                cocktail.renderCocktail()
+                cocktailList().appendChild(cocktail.renderCocktail())
             })
         resetInputs();
+        // Cocktail {id: 1, name: "Old Fashioned", description: "Delicious"}
     }
 }
 

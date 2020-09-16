@@ -19,7 +19,10 @@ Ingredients (has_many cocktails through :ingredientcocktailjointableextraordinai
     name
 
 Questions for Laura
- 
+    Issue with creation now that we added renderCocktail
+    Issue with edit - does not show correct info in field
+    Issue with delete - Not deleting
+    
     Making the backend objects also be js objects
     How am I integrating the join table model in the objects themselves?  Right now I have just cocktails, but where do ingredients come into play, and theen the join table
     OO Javascript - 
