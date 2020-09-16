@@ -36,6 +36,7 @@ function displayCocktails(cocktails) {
 
 
 function createCocktail(e) {
+    debugger;
     e.preventDefault()
     const strongParams = {
         cocktail: {
@@ -53,7 +54,7 @@ function createCocktail(e) {
     })
         .then(resp => resp.json())
         .then(cocktail => {
-            renderCocktail(cocktail)
+            cocktail.renderCocktail()
         })
     resetInputs();
 }

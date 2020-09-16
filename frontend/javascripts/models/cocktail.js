@@ -26,7 +26,6 @@ class Cocktail {
         div.appendChild(deleteButton)
 
         return div
-
     }
 
     createCocktail(){ 

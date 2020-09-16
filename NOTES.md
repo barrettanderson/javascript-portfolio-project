@@ -19,8 +19,16 @@ Ingredients (has_many cocktails through :ingredientcocktailjointableextraordinai
     name
 
 Questions for Laura
-    Edit Button
+ 
+    Making the backend objects also be js objects
     How am I integrating the join table model in the objects themselves?  Right now I have just cocktails, but where do ingredients come into play, and theen the join table
-    OO Javascript
+    OO Javascript - 
+
+    How do I want to encapsulate the logic in rendering my ingredients.
+
+    Laura had a class called form.  These only had static methods(class level methods)
 
     Ingredients - Find or create by method
+    How to render the json - (use include keyword)
+    Accepts nested attributes
+        If they add ingredients
