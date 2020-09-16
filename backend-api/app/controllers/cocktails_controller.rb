@@ -6,6 +6,10 @@ class CocktailsController < ApplicationController
             # :include => {:mixers => {:include => :ingredients => {:except => [:created_at, :updated_at]}, :except => [:created_at, :updated_at]} :except => [:ablkahbfliAJWLDF]
     end
 
+    def show
+        render json: @animal
+    end
+
     def create
         @cocktail = Cocktail.new(cocktail_params)
         if @cocktail.save

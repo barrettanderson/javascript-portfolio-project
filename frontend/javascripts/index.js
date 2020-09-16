@@ -111,15 +111,14 @@ function updateCocktail(c) {
 }
 
 function deleteCocktail(e) {
+    // debugger
     this.id
     this.parentNode
 
     fetch(baseUrl + '/cocktails/' + this.id, {
         method: 'DELETE'
     })
-        .then(resp => {
-            return resp.json()
-        })
+        // .then(resp => resp.json())
         .then(data => {
             this.parentNode.remove()
         })
