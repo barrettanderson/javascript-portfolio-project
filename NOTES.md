@@ -3,29 +3,11 @@ testing
 Join table for the ingredients and the cocktail.
     This could have the id of the ingredient and the cocktail and then the measurement
 
-Cocktail (has_many ingredients through: :ingredientcocktailjointableextraordinaire)
-    (id)
-    name
-    description/history
-
-Join Table - (belongs_to cocktail, belongs_to ingredient)
-    (id)
-    cocktail_id
-    ingredient_id
-    measurement - string
-
-Ingredients (has_many cocktails through :ingredientcocktailjointableextraordinaire)
-    (id)
-    name
 
 Questions for Laura
-    Issue with creation now that we added renderCocktail
-    Issue with edit - does not show correct info in field
-    Issue with delete - Not deleting
-    
-    Making the backend objects also be js objects
+    Making the backend objects also be js objects - Do I need to be domething else in the JS to be deleting the objects?
+
     How am I integrating the join table model in the objects themselves?  Right now I have just cocktails, but where do ingredients come into play, and theen the join table
-    OO Javascript - 
 
     How do I want to encapsulate the logic in rendering my ingredients.
 
@@ -35,3 +17,8 @@ Questions for Laura
     How to render the json - (use include keyword)
     Accepts nested attributes
         If they add ingredients
+
+    Path to add nesting
+    
+    Create Ingredients
+
