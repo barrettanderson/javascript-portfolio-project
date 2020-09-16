@@ -25,6 +25,8 @@ class Ingredient {
 
     renderIngredient() {
         const div = document.createElement('div');
-
+        // I want to create a collection select that has all ingredients
+        // currently found or create a new one
+        const checkbox = document.createElement('checkbox');
     }
 }

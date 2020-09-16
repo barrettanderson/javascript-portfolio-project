@@ -3,7 +3,7 @@ const form = () => document.querySelector('form')
 const cocktailName = () => document.querySelector('input#cocktail-name')
 const cocktailDescription = () => document.querySelector('textarea#cocktail-description')
 const submitButton = () => document.getElementById('submit-cocktail')
-
+const ingredientList = () => document.getElementById('ingredient-list')
 
 const baseUrl = 'http://localhost:3000'
 
@@ -64,7 +64,6 @@ function createCocktail(e) {
                 cocktailList().appendChild(cocktail.renderCocktail())
             })
         resetInputs();
-        // Cocktail {id: 1, name: "Old Fashioned", description: "Delicious"}
     }
 }
 
