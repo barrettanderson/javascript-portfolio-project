@@ -76,6 +76,54 @@ function editCocktail() {
     editedCocktailId = this.id;
 }
 
+function updateCocktail(c) {
+    let name = document.querySelector('#cocktail-name').value;
+    let description = cocktailDescription().value;
+
+    const strongParams = {
+        cocktail: {
+            name: name,
+            description: description
+        }
+    }
+
+    fetch(baseUrl + '/cocktails/' + editedCocktailId, {
+        method: "PATCH",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(strongParams)
+    })
+        .then(resp => resp.json())
+        .then(data => {
+            const div = document.getElementById(editedCocktailId).parentNode
+
+            div.querySelector('h4').innerText = data.name
+            div.querySelector('p').innerText = data.description
+
+            resetInputs();
+            editing = false;
+            editedCocktailId = null;
+            submitButton().value = "Create Cocktail"
+        })
+}
+
+function deleteCocktail(e) {
+    this.id
+    this.parentNode
+
+    fetch(baseUrl + '/cocktails/' + this.id, {
+        method: 'DELETE'
+    })
+        .then(resp => {
+            return resp.json()
+        })
+        .then(data => {
+            this.parentNode.remove()
+        })
+}
+
 function resetInputs() {
     cocktailName().value = "";
     cocktailDescription().value = "";

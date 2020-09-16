@@ -16,6 +16,11 @@ class Cocktail {
         editButton.innerText = 'edit';
         editButton.id = this.id
         editButton.addEventListener('click', editCocktail)
+
+        deleteButton.classList.add('btn');
+        deleteButton.innerText = 'delete';
+        deleteButton.id = this.id
+        deleteButton.addEventListener('click', deleteCocktail)
     
         h4.innerText = this.name
         p.innerText = this.description
