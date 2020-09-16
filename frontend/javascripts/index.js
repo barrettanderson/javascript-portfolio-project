@@ -118,8 +118,7 @@ function deleteCocktail(e) {
     fetch(baseUrl + '/cocktails/' + this.id, {
         method: 'DELETE'
     })
-        // .then(resp => resp.json())
-        .then(data => {
+        .then(resp => {
             this.parentNode.remove()
         })
 }
