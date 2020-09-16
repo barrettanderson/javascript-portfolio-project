@@ -29,18 +29,18 @@ class Ingredient {
         // currently found or create a new one
         const checkbox = document.createElement('checkbox');
         const span = document.createElement('span')
-        const editButton = document.createElement('button')
-        const deleteButton = document.createElement('button')
+        // const editButton = document.createElement('button')
+        // const deleteButton = document.createElement('button')
 
-        editButton.classList.add('butn')
-        editButton.innerText = 'edit'
-        editButton.id = this.id
-        editButton.addEventListener('click', editIngredient)
+        // editButton.classList.add('butn')
+        // editButton.innerText = 'edit'
+        // editButton.id = this.id
+        // editButton.addEventListener('click', editIngredient)
 
-        deleteButton.classList.add('btn')
-        deleteButton.innerText = 'delete'
-        deleteButton.id = this.id
-        deleteButton.addEventListener('click', deleteIngredient)
+        // deleteButton.classList.add('btn')
+        // deleteButton.innerText = 'delete'
+        // deleteButton.id = this.id
+        // deleteButton.addEventListener('click', deleteIngredient)
 
         checkbox.name = this.name
         checkbox.id = this.id
@@ -48,14 +48,34 @@ class Ingredient {
         
         div.appendChild(checkbox)
         div.appendChild(span)
+        // div.appendChild(editButton)
+        // div.appendChild(deleteButton)
 
+        return div
     }
 
-    editIngredient() {
+//     editIngredient() {
+//         const strongParams = {
+//             ingredient: {
+//                 name: name
+//             }
+//         }
 
-    }
+//         fetch(baseUrl + '/ingredients' + editedIngredientID, {
+//             method: "PATCH",
+//             headers: {
+//                 "Accept": "applicaiton/json",
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify(strongParams)
+//         })
+//             .then(resp => resp.json())
+//             .then(ingredient => {
 
-    deleteIngredient() {
-        
-    }
-}
+//             })
+//     }
+
+//     deleteIngredient() {
+
+//     }
+// }
