@@ -4,7 +4,7 @@ class Ingredient {
     this.name = name
     }
 
-    function loadIngredients() {
+    loadIngredients() {
         fetch(baseUrl + '/ingredients.json')
             .then(resp => {
                 if (resp.status !== 200) {
@@ -14,5 +14,17 @@ class Ingredient {
             })
             .catch(errors => console.log(errors))
             .then(data => displayIngredients(data))
+    }
+
+    displayIngredients(ingredients) {
+        ingredients.forEach(ingredient => {
+            ingredient = new Ingredient(ingredient.id, ingredient.name)
+            ingredientList().appendChild(ingredient.renderIngredient())
+        })
+    }
+
+    renderIngredient() {
+        const div = document.createElement('div');
+
     }
 }

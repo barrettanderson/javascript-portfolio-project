@@ -4,6 +4,7 @@ const cocktailName = () => document.querySelector('input#cocktail-name')
 const cocktailDescription = () => document.querySelector('textarea#cocktail-description')
 const submitButton = () => document.getElementById('submit-cocktail')
 
+
 const baseUrl = 'http://localhost:3000'
 
 let editing = false
@@ -127,3 +128,4 @@ function resetInputs() {
     cocktailName().value = "";
     cocktailDescription().value = "";
 }
+
