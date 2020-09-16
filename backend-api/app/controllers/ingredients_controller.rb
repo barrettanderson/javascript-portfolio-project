@@ -8,6 +8,12 @@ class IngredientsController < ApplicationController
 
     def create
         # findorcreateby(params:name)
+        @ingredient = Ingredient.find_or_create_by_name(ingredient_params)
+        if @ingredient.save || @ingredient
+            render json: @ingredient
+        else
+            render json: @ingredient.errors.full_messages, status: :unprocessable_entity
+        end
     end
 
     private

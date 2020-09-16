@@ -17,7 +17,6 @@ class CocktailsController < ApplicationController
         else
             render json: @cocktail.errors.full_messages, status: :unprocessable_entity
         end
-        # render json: @cocktail
     end
 
     def update
