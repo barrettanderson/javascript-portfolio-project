@@ -70,8 +70,8 @@ function createCocktail(e) {
 function editCocktail() {
     editing = true;
 
-    cocktailName().value = this.parentNode.querySelector('h4').innterText
-    cocktailDescription().value = this.parentNode.querySelector('p').innterText
+    cocktailName().value = this.parentNode.querySelector('h4').innerText
+    cocktailDescription().value = this.parentNode.querySelector('p').innerText
     submitButton().value = "Edit Cocktail"
 
     editedCocktailId = this.id;
