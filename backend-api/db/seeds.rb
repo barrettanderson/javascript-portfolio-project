@@ -9,3 +9,4 @@
 Cocktail.create(name: "Old Fashioned", description: "delicious")
 
 Ingredient.create(name: "Whiskey")
+Ingredient.create(name: "Orange")

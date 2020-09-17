@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', callOnLoad)
 
 function callOnLoad() {
     loadCocktails();
+    loadIngredients();
     form().addEventListener('submit', createCocktail)
 }
 
@@ -128,3 +129,22 @@ function resetInputs() {
     cocktailDescription().value = "";
 }
 
+function loadIngredients() {
+    fetch(baseUrl + '/ingredients.json')
+        .then(resp => {
+            if (resp.status !== 200) {
+                throw new Error(resp.statusText)
+            }
+            return resp.json()
+        })
+        .catch(errors => console.log(errors))
+        .then(data => displayIngredients(data))
+}
+
+function displayIngredients(ingredients) {
+    // debugger;
+    ingredients.forEach(ingredient => {
+        ingredient = new Ingredient(ingredient.id, ingredient.name)
+        ingredientList().appendChild(ingredient.renderIngredient())
+    })
+}

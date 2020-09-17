@@ -4,30 +4,32 @@ class Ingredient {
     this.name = name
     }
 
-    loadIngredients() {
-        fetch(baseUrl + '/ingredients.json')
-            .then(resp => {
-                if (resp.status !== 200) {
-                    throw new Error(resp.statusText)
-                }
-                return resp.json()
-            })
-            .catch(errors => console.log(errors))
-            .then(data => displayIngredients(data))
-    }
+    // loadIngredients() {
+    //     debugger;
+    //     fetch(baseUrl + '/ingredients.json')
+    //         .then(resp => {
+    //             if (resp.status !== 200) {
+    //                 throw new Error(resp.statusText)
+    //             }
+    //             return resp.json()
+    //         })
+    //         .catch(errors => console.log(errors))
+    //         .then(data => displayIngredients(data))
+    // }
 
-    displayIngredients(ingredients) {
-        ingredients.forEach(ingredient => {
-            ingredient = new Ingredient(ingredient.id, ingredient.name)
-            ingredientList().appendChild(ingredient.renderIngredient())
-        })
-    }
+    // displayIngredients(ingredients) {
+    //     ingredients.forEach(ingredient => {
+    //         ingredient = new Ingredient(ingredient.id, ingredient.name)
+    //         ingredientList().appendChild(ingredient.renderIngredient())
+    //     })
+    // }
 
     renderIngredient() {
         const div = document.createElement('div');
         // I want to create a collection select that has all ingredients
         // currently found or create a new one
-        const checkbox = document.createElement('checkbox');
+        // const p = document.createElement('p')
+        const checkbox = document.createElement('input');
         const span = document.createElement('span')
         // const editButton = document.createElement('button')
         // const deleteButton = document.createElement('button')
@@ -41,11 +43,12 @@ class Ingredient {
         // deleteButton.innerText = 'delete'
         // deleteButton.id = this.id
         // deleteButton.addEventListener('click', deleteIngredient)
-
+        // p.name = this.name
+        checkbox.type = "checkbox"
         checkbox.name = this.name
         checkbox.id = this.id
         span.innerText = this.name
-        
+        // div.appendChild(p)
         div.appendChild(checkbox)
         div.appendChild(span)
         // div.appendChild(editButton)
@@ -78,4 +81,4 @@ class Ingredient {
 //     deleteIngredient() {
 
 //     }
-// }
+}

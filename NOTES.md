@@ -11,14 +11,14 @@ Questions for Laura
 
     How do I want to encapsulate the logic in rendering my ingredients.
 
-    Laura had a class called form.  These only had static methods(class level methods)
-
-    Ingredients - Find or create by method
+    Ingredients - Find or create by method - Have action in controller.
+        Do I want to have the form_for under html already?
     How to render the json - (use include keyword)
     Accepts nested attributes
         If they add ingredients
 
     Path to add nesting
     
-    Create Ingredients
+    Create Ingredients - Maybe I don't want to allow people to create ingredients, instead just seed all this data?
+    
 
