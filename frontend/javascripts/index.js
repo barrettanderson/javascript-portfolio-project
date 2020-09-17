@@ -4,6 +4,7 @@ const cocktailName = () => document.querySelector('input#cocktail-name')
 const cocktailDescription = () => document.querySelector('textarea#cocktail-description')
 const submitButton = () => document.getElementById('submit-cocktail')
 const ingredientList = () => document.getElementById('ingredient-list')
+const ingredientCheckboxes = () => document.querySelectorAll('input[type="checkbox"]')
 
 const baseUrl = 'http://localhost:3000'
 
@@ -38,7 +39,6 @@ function displayCocktails(cocktails) {
     })
 }
 
-
 function createCocktail(e) {
     e.preventDefault()
 
@@ -49,7 +49,9 @@ function createCocktail(e) {
             cocktail: {
                 id: this.value,
                 name: cocktailName().value,
-                description: cocktailDescription().value
+                description: cocktailDescription().value,
+                ingredient_ids: ingredientCheckbox()
+                // ingredients_attributes: (this will be with accepts nested attributes)
             }
         }
         fetch(baseUrl + '/cocktails.json', {
@@ -74,6 +76,7 @@ function editCocktail() {
 
     cocktailName().value = this.parentNode.querySelector('h4').innerText
     cocktailDescription().value = this.parentNode.querySelector('p').innerText
+    // WILL NEED TO ADD THE INGREDIENTS CHECKED
     submitButton().value = "Edit Cocktail"
 
     editedCocktailId = this.id;
@@ -142,36 +145,53 @@ function loadIngredients() {
 }
 
 function displayIngredients(ingredients) {
-    // debugger;
     ingredients.forEach(ingredient => {
         ingredient = new Ingredient(ingredient.id, ingredient.name)
         ingredientList().appendChild(ingredient.renderIngredient())
     })
 }
 
-function editIngredient() {
-    let editedIngredientId = this.id
-    
-    const strongParams = {
-        ingredient: {
-            name: name
+function ingredientCheckbox() {
+    checkedIngredientArray = []
+    ingredientCheckboxes().forEach(ingredient => {
+        if (ingredient.checked) {
+            checkedIngredientArray << ingredient.id
         }
-    }
-
-    fetch(baseUrl + '/ingredients/' + editedIngredientId, {
-        method: "PATCH",
-        headers: {
-            "Accept": "applicaiton/json",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(strongParams)
     })
-        .then(resp => resp.json())
-        .then(ingredient => {
-
-        })
+    return checkedIngredientArray
 }
 
-function deleteIngredient() {
+// function editIngredient() {
+//     let editedIngredientId = this.id
+    
+//     const strongParams = {
+//         ingredient: {
+//             name: name
+//         }
+//     }
 
-}
+//     fetch(baseUrl + '/ingredients/' + editedIngredientId, {
+//         method: "PATCH",
+//         headers: {
+//             "Accept": "applicaiton/json",
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(strongParams)
+//     })
+//         .then(resp => resp.json())
+//         .then(ingredient => {
+
+//         })
+// }
+
+// function deleteIngredient(e) {
+//     this.id
+//     this.parentNode
+    
+//     fetch(baseUrl + '/ingredients/' + this.id, {
+//         method: 'DELETE'
+//     })
+//         .then(resp => {
+//             this.parentNode.remove()
+//         })
+// }

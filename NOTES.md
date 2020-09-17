@@ -20,4 +20,7 @@ Questions for Laura
     
     Create Ingredients - Maybe I don't want to allow people to create ingredients, instead just seed all this data? I DON'T THINK I WANT PEOPLE TO BE ABLE TO CREATE INGREDIENTS
 
+    document.querySelectorAll('input[type="checkbox"')[1].checked
+
+    ADD ABOVE TO INGREDIENT_IDS
 
