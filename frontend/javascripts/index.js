@@ -9,6 +9,7 @@ const baseUrl = 'http://localhost:3000'
 
 let editing = false
 let editedCocktailId = null;
+let editedIngredientId = null;
 
 document.addEventListener('DOMContentLoaded', callOnLoad)
 
@@ -112,7 +113,6 @@ function updateCocktail(c) {
 }
 
 function deleteCocktail(e) {
-    // debugger
     this.id
     this.parentNode
 
@@ -147,4 +147,31 @@ function displayIngredients(ingredients) {
         ingredient = new Ingredient(ingredient.id, ingredient.name)
         ingredientList().appendChild(ingredient.renderIngredient())
     })
+}
+
+function editIngredient() {
+    let editedIngredientId = this.id
+    
+    const strongParams = {
+        ingredient: {
+            name: name
+        }
+    }
+
+    fetch(baseUrl + '/ingredients/' + editedIngredientId, {
+        method: "PATCH",
+        headers: {
+            "Accept": "applicaiton/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(strongParams)
+    })
+        .then(resp => resp.json())
+        .then(ingredient => {
+
+        })
+}
+
+function deleteIngredient() {
+
 }

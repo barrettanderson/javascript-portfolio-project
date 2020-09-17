@@ -8,5 +8,16 @@
 
 Cocktail.create(name: "Old Fashioned", description: "delicious")
 
-Ingredient.create(name: "Whiskey")
+Ingredient.create(name: "Absinthe")
+Ingredient.create(name: "Brandy")
+Ingredient.create(name: "Cognac")
+Ingredient.create(name: "Gin")
+Ingredient.create(name: "Kahlua")
+Ingredient.create(name: "Mead")
+Ingredient.create(name: "Mezcal")
+Ingredient.create(name: "Pisco")
+Ingredient.create(name: "Rum")
+Ingredient.create(name: "Sake")
+Ingredient.create(name: "Tequila")
 Ingredient.create(name: "Orange")
+Ingredient.create(name: "Whiskey")

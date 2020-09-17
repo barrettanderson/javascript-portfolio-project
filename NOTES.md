@@ -9,16 +9,15 @@ Questions for Laura
 
     How am I integrating the join table model in the objects themselves?  Right now I have just cocktails, but where do ingredients come into play, and theen the join table
 
-    How do I want to encapsulate the logic in rendering my ingredients.
+    Ingredients - 
 
-    Ingredients - Find or create by method - Have action in controller.
-        Do I want to have the form_for under html already?
     How to render the json - (use include keyword)
+
     Accepts nested attributes
         If they add ingredients
 
     Path to add nesting
     
-    Create Ingredients - Maybe I don't want to allow people to create ingredients, instead just seed all this data?
-    
+    Create Ingredients - Maybe I don't want to allow people to create ingredients, instead just seed all this data? I DON'T THINK I WANT PEOPLE TO BE ABLE TO CREATE INGREDIENTS
+
 

@@ -6,6 +6,10 @@ class IngredientsController < ApplicationController
         render json: @ingredients, :except => [:created_at, :updated_at]
     end
 
+    def show
+        render json: @ingredient
+    end
+
     def create
         # findorcreateby(params:name)
         @ingredient = Ingredient.find_or_create_by_name(ingredient_params)
@@ -14,6 +18,18 @@ class IngredientsController < ApplicationController
         else
             render json: @ingredient.errors.full_messages, status: :unprocessable_entity
         end
+    end
+
+    def update
+        if @ingredient.update(ingredient_params)
+            render json: @ingredient
+        else
+            render json: @ingredient.errors.full_messages, status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+        @ingredient.destroy
     end
 
     private
