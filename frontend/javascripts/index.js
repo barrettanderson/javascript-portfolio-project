@@ -152,12 +152,15 @@ function displayIngredients(ingredients) {
 }
 
 function ingredientCheckbox() {
-    checkedIngredientArray = []
+    let checkedIngredientArray = []
+    // debugger;
     ingredientCheckboxes().forEach(ingredient => {
+        debugger
         if (ingredient.checked) {
-            checkedIngredientArray << ingredient.id
+            checkedIngredientArray.push(ingredient.id)
         }
     })
+    // debugger
     return checkedIngredientArray
 }
 
