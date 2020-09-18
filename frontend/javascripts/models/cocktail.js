@@ -7,7 +7,6 @@ class Cocktail {
     }
 
     renderCocktail() {
-        // debugger;
         const div = document.createElement('div');
         const h4 = document.createElement('h4');
         const p = document.createElement('p');
@@ -41,7 +40,4 @@ class Cocktail {
         return div
     }
 
-    createCocktail(){ 
-        cocktail = new Cocktail(name, description)
-    }
 }

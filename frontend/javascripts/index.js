@@ -52,10 +52,9 @@ function createCocktail(e) {
                 name: cocktailName().value,
                 description: cocktailDescription().value,
                 ingredient_ids: ingredientCheckbox()
-                // ingredients_attributes: (this will be with accepts nested attributes)
             }
         }
-        // debugger;
+
         fetch(baseUrl + '/cocktails.json', {
             method: "POST",
             headers: {
