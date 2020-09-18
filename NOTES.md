@@ -5,17 +5,10 @@ Join table for the ingredients and the cocktail.
 
 
 Questions for Laura
-
-    If I add the mixer part
-        Accepts nested attributes
          
 TO DO -
 
     When people edit cocktail, have ingredients that are in there checked
-    Can create empty cocktail
-
-
-
 
 If adding edit/delete button to ingredients
 

@@ -13,31 +13,37 @@ class Cocktail {
         const editButton = document.createElement('button')
         const deleteButton = document.createElement('button')
         const ul = document.createElement('ul')
-        const li = document.createElement('li')
-    
+        
         editButton.classList.add('btn');
         editButton.innerText = 'edit';
         editButton.id = this.id
-        editButton.addEventListener('click', editCocktail)
-
+        editButton.addEventListener('click', () => editCocktail(this.ingredients, this.id))
+        
         deleteButton.classList.add('btn');
         deleteButton.innerText = 'delete';
         deleteButton.id = this.id
         deleteButton.addEventListener('click', deleteCocktail)
-
+        
         h4.innerText = this.name
-
+        h4.id = `c-name-${this.id}`
+        
         p.innerText = this.description
-
+        p.id = `c-description-${this.id}`
+        
         ul.innerText = "Ingredients"
-        li.className = 'ingredient-text'
-    
-
-        li.innerText = `${this.ingredients.map( ing => ing.name)}`
+        ul.id = `ing-l-${this.id}`
+        
+        
+        this.ingredients.forEach( ing => {
+            const li = document.createElement('li')
+            li.innerText = ing.name
+            li.className = 'ingredient-text'
+            ul.appendChild(li)
+        })
+ 
     
         div.appendChild(h4)
         div.appendChild(p)
-        ul.appendChild(li)
         div.appendChild(ul)
         div.appendChild(editButton)
         div.appendChild(deleteButton)

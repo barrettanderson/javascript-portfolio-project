@@ -34,7 +34,6 @@ function loadCocktails() {
 
 function displayCocktails(cocktails) {
     cocktails.forEach(cocktail => {
-        // debugger;
         cocktail = new Cocktail(cocktail.id, cocktail.name, cocktail.description, cocktail.ingredients)
         cocktailList().appendChild(cocktail.renderCocktail())
     })
@@ -54,7 +53,6 @@ function createCocktail(e) {
                 ingredient_ids: ingredientCheckbox()
             }
         }
-        // debugger;
         fetch(baseUrl + '/cocktails.json', {
             method: "POST",
             headers: {
@@ -63,30 +61,41 @@ function createCocktail(e) {
             },
             body: JSON.stringify(strongParams)
         })
-            .then(resp => resp.json())
+            .then(resp => {
+                console.log(resp)
+                if (resp.status !== 200) {
+                    alert("Cocktail name is required")
+                    throw new Error(resp.statusText)
+                } else {
+                return resp.json()
+                }
+            })
             .then(cocktail => {
                 cocktail = new Cocktail(cocktail.id, cocktail.name, cocktail.description, cocktail.ingredients)
                 cocktailList().appendChild(cocktail.renderCocktail())
             })
+            .catch(errors => console.log(errors))
         resetInputs();
     }
 }
 
-function editCocktail() {
+function editCocktail(ingredients, cocktailId) {
     editing = true;
-
-    cocktailName().value = this.parentNode.querySelector('h4').innerText
-    cocktailDescription().value = this.parentNode.querySelector('p').innerText
-    // WILL NEED TO ADD THE INGREDIENTS CHECKED
+    cocktailName().value = document.getElementById(`c-name-${cocktailId}`).innerText
+    cocktailDescription().value = document.getElementById(`c-description-${cocktailId}`).innerText
+    // WILL NEED TO ADD THE INGREDIENTS CHECKED  // 
+    ingredients.forEach( ing => {
+        document.getElementById(`ing-checkbox-${ing.id}`)
+    })
     submitButton().value = "Edit Cocktail"
 
-    editedCocktailId = this.id;
+    editedCocktailId = cocktailId
 }
 
 function updateCocktail(c) {
     let name = document.querySelector('#cocktail-name').value;
     let description = cocktailDescription().value;
-
+ 
     const strongParams = {
         cocktail: {
             name: name,
@@ -106,11 +115,21 @@ function updateCocktail(c) {
         .then(resp => resp.json())
         .then(data => {
             const div = document.getElementById(editedCocktailId).parentNode
-            const p = div.querySelector('.ingredient-text')
+            const ul = document.getElementById(`ing-l-${editedCocktailId}`)
+            ul.innerHTML = "Ingredients"
 
             div.querySelector('h4').innerText = data.name
             div.querySelector('p').innerText = data.description
-            p.innerText = `${data.ingredients.map( ing => ing.name)}`
+
+            
+
+            data.ingredients.forEach( ing => {
+                const li = document.createElement('li')
+                li.innerText = ing.name
+                li.className = 'ingredient-text'
+                ul.appendChild(li)
+            })
+            // li.innerText = `${data.ingredients.map( ing => ing.name)}`
 
             resetInputs();
             editing = false;
@@ -147,8 +166,8 @@ function loadIngredients() {
             }
             return resp.json()
         })
-        .catch(errors => console.log(errors))
         .then(data => displayIngredients(data))
+        .catch(errors => console.log(errors))
 }
 
 function displayIngredients(ingredients) {
@@ -162,7 +181,7 @@ function ingredientCheckbox() {
     let checkedIngredientArray = []
     ingredientCheckboxes().forEach(ingredient => {
         if (ingredient.checked) {
-            checkedIngredientArray.push(ingredient.id)
+            checkedIngredientArray.push(ingredient.id.split("-")[2])
         }
     })
     return checkedIngredientArray

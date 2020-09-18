@@ -12,7 +12,7 @@ class Ingredient {
         checkbox.type = "checkbox"
         checkbox.className = "filled-in"
         checkbox.name = this.name
-        checkbox.id = this.id
+        checkbox.id = `ing-checkbox-${this.id}`
 
         span.innerText = this.name   
 
