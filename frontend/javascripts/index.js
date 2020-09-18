@@ -54,7 +54,7 @@ function createCocktail(e) {
                 ingredient_ids: ingredientCheckbox()
             }
         }
-
+        // debugger;
         fetch(baseUrl + '/cocktails.json', {
             method: "POST",
             headers: {
@@ -106,11 +106,11 @@ function updateCocktail(c) {
         .then(resp => resp.json())
         .then(data => {
             const div = document.getElementById(editedCocktailId).parentNode
-            const p = div.querySelector('#ingredient-text')
+            const p = div.querySelector('.ingredient-text')
 
             div.querySelector('h4').innerText = data.name
             div.querySelector('p').innerText = data.description
-            p.innerText = `Ingredients - ${data.ingredients.map( ing => ing.name)}`
+            p.innerText = `${data.ingredients.map( ing => ing.name)}`
 
             resetInputs();
             editing = false;

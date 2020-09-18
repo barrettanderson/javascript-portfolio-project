@@ -13,7 +13,7 @@ class Cocktail {
         const editButton = document.createElement('button')
         const deleteButton = document.createElement('button')
         const ul = document.createElement('ul')
-        const liIngredients = document.createElement('li')
+        const li = document.createElement('li')
     
         editButton.classList.add('btn');
         editButton.innerText = 'edit';
@@ -27,16 +27,20 @@ class Cocktail {
 
         h4.innerText = this.name
 
-        p.innerText = `Description - ${this.description}`
+        p.innerText = this.description
 
         ul.innerText = "Ingredients"
-        liIngredients.id = "ingredient-text"
-        liIngredients.innerText = `${this.ingredients.map( ing => ing.name)}`
+        li.className = 'ingredient-text'
+    
+
+        li.innerText = `${this.ingredients.map( ing => ing.name)}`
     
         div.appendChild(h4)
         div.appendChild(p)
+        ul.appendChild(li)
         div.appendChild(ul)
-        div.appendChild(liIngredients)
+        div.appendChild(editButton)
+        div.appendChild(deleteButton)
 
         return div
     }
