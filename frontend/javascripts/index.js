@@ -168,38 +168,3 @@ function ingredientCheckbox() {
     })
     return checkedIngredientArray
 }
-
-// function editIngredient() {
-//     let editedIngredientId = this.id
-    
-//     const strongParams = {
-//         ingredient: {
-//             name: name
-//         }
-//     }
-
-//     fetch(baseUrl + '/ingredients/' + editedIngredientId, {
-//         method: "PATCH",
-//         headers: {
-//             "Accept": "applicaiton/json",
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(strongParams)
-//     })
-//         .then(resp => resp.json())
-//         .then(ingredient => {
-
-//         })
-// }
-
-// function deleteIngredient(e) {
-//     this.id
-//     this.parentNode
-    
-//     fetch(baseUrl + '/ingredients/' + this.id, {
-//         method: 'DELETE'
-//     })
-//         .then(resp => {
-//             this.parentNode.remove()
-//         })
-// }
