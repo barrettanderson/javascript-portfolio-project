@@ -32,6 +32,7 @@ class IngredientsController < ApplicationController
         @ingredient.destroy
     end
 
+    
     private
         def set_ingredient
             @ingredient = Ingredient.find(params[:id])
