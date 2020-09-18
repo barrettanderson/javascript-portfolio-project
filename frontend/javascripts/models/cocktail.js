@@ -17,7 +17,7 @@ class Cocktail {
         editButton.classList.add('btn');
         editButton.innerText = 'edit';
         editButton.id = this.id
-        editButton.addEventListener('click', () => editCocktail(this.ingredients, this.id))
+        editButton.addEventListener('click', () => editCocktail(this))
         
         deleteButton.classList.add('btn');
         deleteButton.innerText = 'delete';

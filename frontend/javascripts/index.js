@@ -9,7 +9,7 @@ const ingredientCheckboxes = () => document.querySelectorAll('input[type="checkb
 const baseUrl = 'http://localhost:3000'
 
 let editing = false
-let editedCocktailId = null;
+let editedCocktail = null;
 let editedIngredientId = null;
 
 document.addEventListener('DOMContentLoaded', callOnLoad)
@@ -79,17 +79,17 @@ function createCocktail(e) {
     }
 }
 
-function editCocktail(ingredients, cocktailId) {
+function editCocktail(cocktail) {
     editing = true;
-    cocktailName().value = document.getElementById(`c-name-${cocktailId}`).innerText
-    cocktailDescription().value = document.getElementById(`c-description-${cocktailId}`).innerText
-    // WILL NEED TO ADD THE INGREDIENTS CHECKED  // 
-    ingredients.forEach( ing => {
-        document.getElementById(`ing-checkbox-${ing.id}`)
+    cocktailName().value = document.getElementById(`c-name-${cocktail.id}`).innerText
+    cocktailDescription().value = document.getElementById(`c-description-${cocktail.id}`).innerText
+    cocktail.ingredients.forEach( ing => {
+        document.getElementById(`ing-checkbox-${ing.id}`).checked = true
+
     })
     submitButton().value = "Edit Cocktail"
 
-    editedCocktailId = cocktailId
+    editedCocktail = cocktail
 }
 
 function updateCocktail(c) {
@@ -104,7 +104,7 @@ function updateCocktail(c) {
         }
     }
 
-    fetch(baseUrl + '/cocktails/' + editedCocktailId, {
+    fetch(baseUrl + '/cocktails/' + editedCocktail.id, {
         method: "PATCH",
         headers: {
             "Accept": "application/json",
@@ -114,14 +114,13 @@ function updateCocktail(c) {
     })
         .then(resp => resp.json())
         .then(data => {
-            const div = document.getElementById(editedCocktailId).parentNode
-            const ul = document.getElementById(`ing-l-${editedCocktailId}`)
+            // debugger;
+            const div = document.getElementById(editedCocktail.id).parentNode
+            const ul = document.getElementById(`ing-l-${editedCocktail.id}`)
             ul.innerHTML = "Ingredients"
 
             div.querySelector('h4').innerText = data.name
             div.querySelector('p').innerText = data.description
-
-            
 
             data.ingredients.forEach( ing => {
                 const li = document.createElement('li')
@@ -129,11 +128,12 @@ function updateCocktail(c) {
                 li.className = 'ingredient-text'
                 ul.appendChild(li)
             })
-            // li.innerText = `${data.ingredients.map( ing => ing.name)}`
+
+            editedCocktail.ingredients = data.ingredients
 
             resetInputs();
             editing = false;
-            editedCocktailId = null;
+            editedCocktail = null;
             submitButton().value = "Create Cocktail"
         })
 }
