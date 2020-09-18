@@ -89,7 +89,8 @@ function updateCocktail(c) {
     const strongParams = {
         cocktail: {
             name: name,
-            description: description
+            description: description,
+            ingredient_ids: ingredientCheckbox()
         }
     }
 
