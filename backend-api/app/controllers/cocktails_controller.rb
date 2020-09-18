@@ -2,8 +2,7 @@ class CocktailsController < ApplicationController
     before_action :set_cocktail, only: [:show, :update, :destroy]
     def index
         @cocktails = Cocktail.all
-        render json: @cocktails, :except => [:created_at, :updated_at]
-            # :include => {:mixers => {:include => :ingredients => {:except => [:created_at, :updated_at]}, :except => [:created_at, :updated_at]} :except => [:ablkahbfliAJWLDF]
+        render json: @cocktails, :except => [:created_at, :updated_at], :include => [:ingredients]
     end
 
     def show
@@ -13,7 +12,7 @@ class CocktailsController < ApplicationController
     def create
         @cocktail = Cocktail.new(cocktail_params)
         if @cocktail.save
-            render json: @cocktail
+            render json: @cocktail, :except => [:created_at, :updated_at], :include => [:ingredients]
         else
             render json: @cocktail.errors.full_messages, status: :unprocessable_entity
         end
@@ -21,7 +20,7 @@ class CocktailsController < ApplicationController
 
     def update
         if @cocktail.update(cocktail_params)
-            render json: @cocktail
+            render json: @cocktail, :except => [:created_at, :updated_at], :include => [:ingredients]
         else
             render json: @cocktail.errors.full_messages, status: :unprocessable_entity
         end

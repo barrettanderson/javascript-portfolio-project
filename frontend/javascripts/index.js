@@ -34,7 +34,8 @@ function loadCocktails() {
 
 function displayCocktails(cocktails) {
     cocktails.forEach(cocktail => {
-        cocktail = new Cocktail(cocktail.id, cocktail.name, cocktail.description)
+        // debugger;
+        cocktail = new Cocktail(cocktail.id, cocktail.name, cocktail.description, cocktail.ingredients)
         cocktailList().appendChild(cocktail.renderCocktail())
     })
 }
@@ -54,6 +55,7 @@ function createCocktail(e) {
                 // ingredients_attributes: (this will be with accepts nested attributes)
             }
         }
+        // debugger;
         fetch(baseUrl + '/cocktails.json', {
             method: "POST",
             headers: {
@@ -64,7 +66,7 @@ function createCocktail(e) {
         })
             .then(resp => resp.json())
             .then(cocktail => {
-                cocktail = new Cocktail(cocktail.id, cocktail.name, cocktail.description)
+                cocktail = new Cocktail(cocktail.id, cocktail.name, cocktail.description, cocktail.ingredients)
                 cocktailList().appendChild(cocktail.renderCocktail())
             })
         resetInputs();
@@ -105,9 +107,11 @@ function updateCocktail(c) {
         .then(resp => resp.json())
         .then(data => {
             const div = document.getElementById(editedCocktailId).parentNode
+            const p = div.querySelector('#ingredient-text')
 
             div.querySelector('h4').innerText = data.name
             div.querySelector('p').innerText = data.description
+            p.innerText = `Ingredients - ${data.ingredients.map( ing => ing.name)}`
 
             resetInputs();
             editing = false;
@@ -131,6 +135,9 @@ function deleteCocktail(e) {
 function resetInputs() {
     cocktailName().value = "";
     cocktailDescription().value = "";
+    ingredientCheckboxes().forEach(element =>
+        element.checked = false
+    )
 }
 
 function loadIngredients() {

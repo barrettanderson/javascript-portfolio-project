@@ -1,8 +1,9 @@
 class Cocktail {
-    constructor(id, name, description) {
+    constructor(id, name, description, ingredients) {
         this.id = id
         this.name = name
         this.description = description
+        this.ingredients = ingredients
     }
 
     renderCocktail() {
@@ -23,9 +24,13 @@ class Cocktail {
         deleteButton.innerText = 'delete';
         deleteButton.id = this.id
         deleteButton.addEventListener('click', deleteCocktail)
+
         h4.innerText = this.name
+
         p.innerText = this.description
-        pIngredients.innerText = `Ingredients - ${this.ingredients}`
+
+        pIngredients.id = "ingredient-text"
+        pIngredients.innerText = `Ingredients - ${this.ingredients.map( ing => ing.name)}`
     
         div.appendChild(h4)
         div.appendChild(p)

@@ -10,6 +10,5 @@ Questions for Laura
         Accepts nested attributes
          
 TO DO -
-    Add ingredients to show under the cocktail list
+
     When people edit cocktail, have ingredients that are in there checked
-    Reset values
