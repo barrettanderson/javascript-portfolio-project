@@ -62,7 +62,6 @@ function createCocktail(e) {
             body: JSON.stringify(strongParams)
         })
             .then(resp => {
-                console.log(resp)
                 if (resp.status !== 200) {
                     alert("Cocktail name is required")
                     throw new Error(resp.statusText)
@@ -112,9 +111,15 @@ function updateCocktail(c) {
         },
         body: JSON.stringify(strongParams)
     })
-        .then(resp => resp.json())
+        .then(resp => {
+            if (resp.status !== 200) {
+                alert("Cocktail name is required")
+                throw new Error(resp.statusText)
+            } else {
+                return resp.json()
+            }
+        })
         .then(data => {
-            // debugger;
             const div = document.getElementById(editedCocktail.id).parentNode
             const ul = document.getElementById(`ing-l-${editedCocktail.id}`)
             ul.innerHTML = "Ingredients"
